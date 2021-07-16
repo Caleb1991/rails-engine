@@ -4,7 +4,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def show
-    render json: Item.find(params[:id])
+    render json: Item.find(params[:id]).limit(params[:limit]).offset((params[:page_number].to_i - 1)*params[:limit].to_i)
   end
 
   def create

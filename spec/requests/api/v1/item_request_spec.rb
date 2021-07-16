@@ -4,7 +4,7 @@ describe 'Items API' do
   it 'sends all items 20 per page' do
     create_list(:item, 35)
 
-    get '/api/v1/items'
+    get '/api/v1/items/1/20'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
