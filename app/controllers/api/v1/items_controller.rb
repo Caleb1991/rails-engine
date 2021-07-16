@@ -1,10 +1,10 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    render json: Item.all
+    render json: Item.all.items_displayed_per_page(params[:limit], params[:page_number])
   end
 
   def show
-    render json: Item.find(params[:id]).limit(params[:limit]).offset((params[:page_number].to_i - 1)*params[:limit].to_i)
+    render json: Item.find(params[:id])
   end
 
   def create

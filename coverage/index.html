@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-07-16T17:27:16-06:00">2021-07-16T17:27:16-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-07-16T17:30:21-06:00">2021-07-16T17:30:21-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -340,7 +340,7 @@
 
             
 
-            <code class="ruby">    render json: Merchant.all.number_displayed_per_page(params[:limit], params[:page_number])</code>
+            <code class="ruby">    render json: Merchant.all.merchants_displayed_per_page(params[:limit], params[:page_number])</code>
           </li>
         </div>
       
@@ -598,7 +598,7 @@
 
             
 
-            <code class="ruby">  def self.number_displayed_per_page(limit_params, page_params)</code>
+            <code class="ruby">  def self.merchants_displayed_per_page(limit_params, page_params)</code>
           </li>
         </div>
       
