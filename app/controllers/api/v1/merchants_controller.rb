@@ -1,7 +1,7 @@
 class Api::V1::MerchantsController < ApplicationController
   def index
     binding.pry
-    render json: Merchant.all.limit(params[:limit]).offset((params[:page_number].to_i - 1)*params[:limit].to_i)
+    render json: Merchant.all.number_displayed_per_page(params[:limit], params[:page_number])
   end
 
   def show
