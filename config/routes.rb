@@ -5,13 +5,14 @@ Rails.application.routes.draw do
       resources :merchants, only: [:index, :show]
       resources :items
 
-      namespace :item do
+      namespace :items do
+        get '/find', to: 'items#search'
         scope '/:id', :as => 'item' do
           resources :merchant, only: :index
         end
       end
 
-      namespace :merchant do
+      namespace :merchants do
         scope '/:id', :as => 'merchant' do
           resources :items, only: :index
         end

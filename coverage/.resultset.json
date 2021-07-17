@@ -259,6 +259,7 @@
           1,
           1,
           1,
+          1,
           null,
           null,
           null,
@@ -287,27 +288,6 @@
         "lines": [
           1,
           1,
-          null
-        ]
-      },
-      "/Users/calebwittman/turing/mod_3/projects/rails-engine/spec/requests/api/v1/item/merchant_request_spec.rb": {
-        "lines": [
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
           null
         ]
       },
@@ -467,20 +447,22 @@
           null
         ]
       },
-      "/Users/calebwittman/turing/mod_3/projects/rails-engine/spec/requests/api/v1/merchant/items_request_spec.rb": {
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/spec/requests/api/v1/items/merchant_request_spec.rb": {
         "lines": [
           1,
           null,
           1,
           1,
           1,
-          null,
+          1,
+          1,
           1,
           null,
           1,
           null,
           1,
           null,
+          1,
           1,
           null,
           null
@@ -601,6 +583,25 @@
           null
         ]
       },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/spec/requests/api/v1/merchants/items_request_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/models/item.rb": {
         "lines": [
           1,
@@ -609,23 +610,6 @@
           1,
           8,
           null,
-          null
-        ]
-      },
-      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/api/v1/item/merchant_controller.rb": {
-        "lines": [
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/application_controller.rb": {
-        "lines": [
-          1,
           null
         ]
       },
@@ -675,7 +659,13 @@
           null
         ]
       },
-      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/api/v1/merchant/items_controller.rb": {
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/application_controller.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/api/v1/items/merchant_controller.rb": {
         "lines": [
           1,
           1,
@@ -714,8 +704,19 @@
           null,
           null
         ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/api/v1/merchants/items_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
       }
     },
-    "timestamp": 1626561414
+    "timestamp": 1626562348
   }
 }

@@ -4,7 +4,7 @@ describe 'Merchant Items API' do
   it 'returns the items for a given merchant' do
     new = create(:merchant)
 
-    get "/api/v1/merchant/#{new.id}/items"
+    get "/api/v1/merchants/#{new.id}/items"
 
     expect(response).to be_successful
 

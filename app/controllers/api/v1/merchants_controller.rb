@@ -7,7 +7,7 @@ class Api::V1::MerchantsController < ApplicationController
     if params[:limit] && params[:limit].to_i <= 0
       params[:limit] = 20
     end
-    
+
     if params.include?(:limit) && params.include?(:page_number)
       render json: Merchant.all.merchants_displayed_per_page(params[:limit], params[:page_number])
     elsif params.include?(:page_number)
