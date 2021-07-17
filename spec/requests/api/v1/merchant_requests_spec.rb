@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Merchant API' do
   it 'sends all merchants 20 at a time' do
-    create_list(:merchant   , 35)
+    create_list(:merchant, 35)
 
     get '/api/v1/merchants/1/20'
 

@@ -1,6 +1,5 @@
 class Api::V1::MerchantsController < ApplicationController
   def index
-    binding.pry
     render json: Merchant.all.merchants_displayed_per_page(params[:limit], params[:page_number])
   end
 
