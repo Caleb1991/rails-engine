@@ -4,7 +4,7 @@ describe 'Items API' do
   it 'sends all items 20 per page' do
     create_list(:item, 35)
 
-    get '/api/v1/items/1/20'
+    get '/api/v1/items/?page_number=1&limit=20'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -28,11 +28,12 @@ describe 'Items API' do
   end
 
   it 'can create an item' do
+    merchant = create(:merchant)
     item_params = ({
       name: 'Roalds Ropes',
       description: 'Much strong.',
       unit_price: 10.5,
-      merchant_id: 1
+      merchant_id: merchant.id
       })
 
       headers = { 'CONTENT_TYPE' => 'application/json' }
@@ -49,12 +50,13 @@ describe 'Items API' do
     end
 
   it 'can edit an item' do
-    item = create(:item)
+    merchant = create(:merchant)
+    item = Item.create(name: 'This', description: 'Wicked Awesome', unit_price: 10.5, merchant_id: merchant.id)
     previous_name = Item.last.name
     new_name = { name: 'Roalds Ropes'}
     headers = {'CONTENT_TYPE' => 'application/json'}
 
-    patch "/api/v1/items/#{item.id}", headers: headers, params: JSON.generate({name: new_name})
+    patch "/api/v1/items/#{item.id}", headers: headers, params: JSON.generate({item: new_name})
     item = Item.find(item.id)
 
     expect(response).to be_successful
