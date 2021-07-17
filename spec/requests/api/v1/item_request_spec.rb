@@ -1,10 +1,87 @@
 require 'rails_helper'
 
 describe 'Items API' do
-  it 'sends all items 20 per page' do
+  it 'sends all items 20 per page by default' do
     create_list(:item, 35)
 
-    get '/api/v1/items/?page_number=1&limit=20'
+    get '/api/v1/items'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(20)
+  end
+
+  it 'can take in just limit params' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?limit=15'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(15)
+  end
+
+  it 'can take in just page number params' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?page_number=2'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(15)
+  end
+
+  it 'can take in both params' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?page_number=2&limit=12'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(12)
+  end
+
+  it 'defaults to 20 when given zero limit' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?limit=0'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(20)
+  end
+
+  it 'defaults to one when given zero as a page_number' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?page_number=0'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(20)
+  end
+
+  it 'defaults to 1 when given negative page_limits' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?page_number=-1'
+
+    expect(response).to be_successful
+    items_page_one = JSON.parse(response.body, symbolize_names: true)
+
+    expect(items_page_one.count).to eq(20)
+  end
+
+  it 'defaults to 20 when given negative limits' do
+    create_list(:item, 35)
+
+    get '/api/v1/items?limit=-1'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)

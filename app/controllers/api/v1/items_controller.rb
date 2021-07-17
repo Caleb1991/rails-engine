@@ -1,11 +1,19 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    if params.include?(:page_number)
-      render json: Item.all.items_displayed_per_page(20, params[:page_number])
-    elsif params.include?(:limit)
-      render json: Item.all.items_displayed_per_page(params[:limit])
-    elsif params.include?(:limit) && params.include?(:page_number)
+    if params[:page_number] && params[:page_number].to_i <= 0
+      params[:page_number] = 1
+    end
+
+    if params[:limit] && params[:limit].to_i <= 0
+      params[:limit] = 20
+    end
+
+    if params[:limit] && params[:page_number]
       render json: Item.all.items_displayed_per_page(params[:limit], params[:page_number])
+    elsif params[:page_number]
+      render json: Item.all.items_displayed_per_page(20, params[:page_number])
+    elsif params[:limit]
+      render json: Item.all.items_displayed_per_page(params[:limit])
     else
       render json: Item.all.items_displayed_per_page
     end
