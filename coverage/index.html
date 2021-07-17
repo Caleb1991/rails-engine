@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-07-17T13:40:33-06:00">2021-07-17T13:40:33-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-07-17T14:41:51-06:00">2021-07-17T14:41:51-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.96
+         2.01
        </span>
     </span> hits/line
     )
@@ -297,7 +297,7 @@
             <td class="cell--number">6</td>
             <td class="cell--number">6</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">19.50</td>
+            <td class="cell--number">21.00</td>
             
           </tr>
         
@@ -4188,8 +4188,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="38" data-linenumber="3">
-            <span class="hits">38</span>
+          <li class="covered" data-hits="41" data-linenumber="3">
+            <span class="hits">41</span>
             
 
             
@@ -4199,8 +4199,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="38" data-linenumber="4">
-            <span class="hits">38</span>
+          <li class="covered" data-hits="41" data-linenumber="4">
+            <span class="hits">41</span>
             
 
             
@@ -4210,8 +4210,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="38" data-linenumber="5">
-            <span class="hits">38</span>
+          <li class="covered" data-hits="41" data-linenumber="5">
+            <span class="hits">41</span>
             
 
             
@@ -4227,7 +4227,7 @@
 
             
 
-            <code class="ruby">    association :merchant</code>
+            <code class="ruby">    merchant</code>
           </li>
         </div>
       
@@ -4443,7 +4443,7 @@
 
             
 
-            <code class="ruby">    merchant_1_item = Item.create(name: &#39;This&#39;, description: &#39;Wicked Awesome&#39;, unit_price: 10.5, merchant_id: merchant_1.id)</code>
+            <code class="ruby">    merchant_1_item = create(:item, merchant: merchant_1)</code>
           </li>
         </div>
       
@@ -4454,7 +4454,7 @@
 
             
 
-            <code class="ruby">    merchant_2_item = Item.create(name: &#39;This&#39;, description: &#39;Wicked Awesome&#39;, unit_price: 10.5, merchant_id: merchant_2.id)</code>
+            <code class="ruby">    merchant_2_item = create(:item, merchant: merchant_2)</code>
           </li>
         </div>
       
@@ -5178,7 +5178,7 @@
 
             
 
-            <code class="ruby">    item = Item.create(name: &#39;This&#39;, description: &#39;Wicked Awesome&#39;, unit_price: 10.5, merchant_id: merchant.id)</code>
+            <code class="ruby">    item = create(:item, merchant: merchant)</code>
           </li>
         </div>
       

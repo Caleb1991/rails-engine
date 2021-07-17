@@ -51,7 +51,7 @@ describe 'Items API' do
 
   it 'can edit an item' do
     merchant = create(:merchant)
-    item = Item.create(name: 'This', description: 'Wicked Awesome', unit_price: 10.5, merchant_id: merchant.id)
+    item = create(:item, merchant: merchant)
     previous_name = Item.last.name
     new_name = { name: 'Roalds Ropes'}
     headers = {'CONTENT_TYPE' => 'application/json'}
