@@ -106,6 +106,6 @@ describe 'Merchant API' do
 
     merchant = JSON.parse(response.body, symbolize_names: true)
 
-    expect(new.name).to eq(merchant[:name])
+    expect(new.name).to eq(merchant[:data][:attributes][:name])
   end
 end

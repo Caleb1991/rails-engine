@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'Merchant Items API' do
   it 'returns the items for a given merchant' do
     new = create(:merchant)
+    item = create(:item, merchant: new)
 
     get "/api/v1/merchants/#{new.id}/items"
 
@@ -10,6 +11,6 @@ describe 'Merchant Items API' do
 
     items = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items.count).to eq(0)
+    expect(items.count).to eq(1)
   end
 end

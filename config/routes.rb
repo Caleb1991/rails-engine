@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       end
 
       namespace :merchants do
+        get '/find_all', to: 'merchants#search'
         scope '/:id', :as => 'merchant' do
           resources :items, only: :index
         end

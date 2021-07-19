@@ -98,10 +98,10 @@ describe 'Items API' do
 
     item = JSON.parse(response.body, symbolize_names: true)
 
-    expect(new.name).to eq(item[:name])
-    expect(new.description).to eq(item[:description])
-    expect(new.unit_price).to eq(item[:unit_price])
-    expect(new.merchant_id).to eq(item[:merchant_id])
+    expect(new.name).to eq(item[:data][:attributes][:name])
+    expect(new.description).to eq(item[:data][:attributes][:description])
+    expect(new.unit_price).to eq(item[:data][:attributes][:unit_price])
+    expect(new.merchant_id).to eq(item[:data][:attributes][:merchant_id])
   end
 
   it 'can create an item' do
