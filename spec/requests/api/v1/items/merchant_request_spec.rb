@@ -14,7 +14,4 @@ describe 'Merchant by Item API' do
     expect(merchant[:data][:attributes][:name]).to eq(merchant_1.name)
     expect(merchant[:data][:attributes][:name]).to_not eq(merchant_2.name)
   end
-
-  it 'returns the top result for a name search' do
-  end
 end

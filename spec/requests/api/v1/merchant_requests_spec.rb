@@ -108,4 +108,17 @@ describe 'Merchant API' do
 
     expect(new.name).to eq(merchant[:data][:attributes][:name])
   end
+
+  it 'returns the top result for a name search' do
+    merchant_1 = Merchant.create(name: 'Soald')
+    merchant_2 = Merchant.create!(name: 'Roald')
+
+    get '/api/v1/merchants/find?name=oal'
+
+    expect(response).to be_successful
+
+    results = JSON.parse(response.body, symbolize_names: true)
+
+    expect(results[:data][:attributes][:name]).to eq('Roald')
+  end
 end

@@ -23,4 +23,12 @@ class Api::V1::MerchantsController < ApplicationController
     merchant = Merchant.find(params[:id])
     render json: MerchantSerializer.new(merchant)
   end
+
+  def search
+    merchant = Merchant.where('lower(name) like ?', "%#{params[:name].downcase}%").order(:name).first
+
+    if merchant
+      render json: MerchantSerializer.new(merchant)
+    end
+  end
 end
