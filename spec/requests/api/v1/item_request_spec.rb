@@ -9,7 +9,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(20)
+    expect(items_page_one[:data].count).to eq(20)
   end
 
   it 'can take in just limit params' do
@@ -20,7 +20,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(15)
+    expect(items_page_one[:data].count).to eq(15)
   end
 
   it 'can take in just page number params' do
@@ -31,7 +31,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(15)
+    expect(items_page_one[:data].count).to eq(15)
   end
 
   it 'can take in both params' do
@@ -42,7 +42,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(12)
+    expect(items_page_one[:data].count).to eq(12)
   end
 
   it 'defaults to 20 when given zero limit' do
@@ -53,7 +53,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(20)
+    expect(items_page_one[:data].count).to eq(20)
   end
 
   it 'defaults to one when given zero as a page_number' do
@@ -64,7 +64,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(20)
+    expect(items_page_one[:data].count).to eq(20)
   end
 
   it 'defaults to 1 when given negative page_limits' do
@@ -75,7 +75,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(20)
+    expect(items_page_one[:data].count).to eq(20)
   end
 
   it 'defaults to 20 when given negative limits' do
@@ -86,7 +86,7 @@ describe 'Items API' do
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
 
-    expect(items_page_one.count).to eq(20)
+    expect(items_page_one[:data].count).to eq(20)
   end
 
   it 'sends a given item' do
@@ -118,7 +118,7 @@ describe 'Items API' do
       post '/api/v1/items', headers: headers, params: JSON.generate({item: item_params})
 
       created_item = Item.last
-
+      binding.pry
       expect(response).to be_successful
       expect(created_item.name).to eq(item_params[:name])
       expect(created_item.description).to eq(item_params[:description])

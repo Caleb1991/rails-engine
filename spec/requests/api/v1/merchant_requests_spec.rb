@@ -10,7 +10,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(20)
+    expect(merchants[:data].count).to eq(20)
   end
 
   it 'can take in just limit params' do
@@ -22,7 +22,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(15)
+    expect(merchants[:data].count).to eq(15)
   end
 
   it 'can take in just page number params' do
@@ -34,7 +34,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(15)
+    expect(merchants[:data].count).to eq(15)
   end
 
   it 'can take in both params' do
@@ -46,7 +46,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(15)
+    expect(merchants[:data].count).to eq(15)
   end
 
   it 'handles zero limits' do
@@ -58,7 +58,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(20)
+    expect(merchants[:data].count).to eq(20)
   end
 
   it 'handles zero page number' do
@@ -70,7 +70,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(20)
+    expect(merchants[:data].count).to eq(20)
   end
 
   it 'handles negative limits' do
@@ -82,7 +82,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(20)
+    expect(merchants[:data].count).to eq(20)
   end
 
   it 'handles negative page numbers' do
@@ -94,7 +94,7 @@ describe 'Merchant API' do
 
     merchants = JSON.parse(response.body, symbolize_names: true)
 
-    expect(merchants.count).to eq(20)
+    expect(merchants[:data].count).to eq(20)
   end
 
   it 'sends one merchant' do

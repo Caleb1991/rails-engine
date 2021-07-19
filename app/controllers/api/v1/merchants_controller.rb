@@ -9,13 +9,17 @@ class Api::V1::MerchantsController < ApplicationController
     end
 
     if params.include?(:limit) && params.include?(:page_number)
-      render json: Merchant.all.merchants_displayed_per_page(params[:limit], params[:page_number])
+      merchants = Merchant.all.merchants_displayed_per_page(params[:limit], params[:page_number])
+      render json: MerchantSerializer.new(merchants)
     elsif params.include?(:page_number)
-      render json: Merchant.all.merchants_displayed_per_page(20, params[:page_number])
+      merchants = Merchant.all.merchants_displayed_per_page(20, params[:page_number])
+      render json: MerchantSerializer.new(merchants)
     elsif params.include?(:limit)
-      render json: Merchant.all.merchants_displayed_per_page(params[:limit])
+      merchants = Merchant.all.merchants_displayed_per_page(params[:limit])
+      render json: MerchantSerializer.new(merchants)
     else
-      render json: Merchant.all.merchants_displayed_per_page
+      merchants = Merchant.all.merchants_displayed_per_page
+      render json: MerchantSerializer.new(merchants)
     end
   end
 

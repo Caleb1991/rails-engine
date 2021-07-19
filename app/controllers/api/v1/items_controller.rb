@@ -9,13 +9,17 @@ class Api::V1::ItemsController < ApplicationController
     end
 
     if params[:limit] && params[:page_number]
-      render json: Item.all.items_displayed_per_page(params[:limit], params[:page_number])
+      items = Item.all.items_displayed_per_page(params[:limit], params[:page_number])
+      render json: ItemSerializer.new(items)
     elsif params[:page_number]
-      render json: Item.all.items_displayed_per_page(20, params[:page_number])
+      items = Item.all.items_displayed_per_page(20, params[:page_number])
+      render json: ItemSerializer.new(items)
     elsif params[:limit]
-      render json: Item.all.items_displayed_per_page(params[:limit])
+      items = Item.all.items_displayed_per_page(params[:limit])
+      render json: ItemSerializer.new(items)
     else
-      render json: Item.all.items_displayed_per_page
+      items = Item.all.items_displayed_per_page
+      render json: ItemSerializer.new(items)
     end
   end
 
@@ -24,11 +28,14 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def create
-    render json: Item.create(item_params)
+    item = Item.create(item_params)
+
+    render json: ItemSerializer.new(item)
   end
 
   def update
-    render json: Item.update(params[:id], item_params)
+    item = Item.update(params[:id], item_params)
+    render json: ItemSerializer.new(item)
   end
 
   def destroy
