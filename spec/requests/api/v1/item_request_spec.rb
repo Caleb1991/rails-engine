@@ -15,7 +15,7 @@ describe 'Items API' do
   it 'can take in just limit params' do
     create_list(:item, 35)
 
-    get '/api/v1/items?limit=15'
+    get '/api/v1/items?per_page=15'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -37,7 +37,7 @@ describe 'Items API' do
   it 'can take in both params' do
     create_list(:item, 35)
 
-    get '/api/v1/items?page_number=2&limit=12'
+    get '/api/v1/items?page_number=2&per_page=12'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -48,7 +48,7 @@ describe 'Items API' do
   it 'defaults to 20 when given zero limit' do
     create_list(:item, 35)
 
-    get '/api/v1/items?limit=0'
+    get '/api/v1/items?per_page=0'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -81,7 +81,7 @@ describe 'Items API' do
   it 'defaults to 20 when given negative limits' do
     create_list(:item, 35)
 
-    get '/api/v1/items?limit=-1'
+    get '/api/v1/items?per_page=-1'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -118,7 +118,7 @@ describe 'Items API' do
       post '/api/v1/items', headers: headers, params: JSON.generate({item: item_params})
 
       created_item = Item.last
-      binding.pry
+
       expect(response).to be_successful
       expect(created_item.name).to eq(item_params[:name])
       expect(created_item.description).to eq(item_params[:description])
@@ -148,5 +148,21 @@ describe 'Items API' do
 
     expect(response).to be_successful
     expect{Item.find(item.id)}.to raise_error(ActiveRecord::RecordNotFound)
+  end
+
+  it 'sends the all results for a given search' do
+    merchant = create(:merchant)
+    item_1 = Item.create!(name: "Roald's Rings", description: 'A great buy', unit_price: 1300, merchant_id: merchant.id)
+    item_2 = Item.create!(name: "Another Seller", description: 'Bring out the best', unit_price: 1400, merchant_id: merchant.id)
+    item_2 = Item.create!(name: "test", description: 'test', unit_price: 1400, merchant_id: merchant.id)
+
+    get '/api/v1/items/find_all?name=ring'
+
+    results = JSON.parse(response.body, symbolize_names: true)
+
+    expect(response).to be_successful
+    expect(results[:data].count).to eq(2)
+    expect(results[:data][0][:attributes][:name]).to eq(item_1.name)
+    expect(results[:data][1][:attributes][:name]).to eq(item_2.name)
   end
 end

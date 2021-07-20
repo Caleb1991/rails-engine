@@ -4,18 +4,18 @@ class Api::V1::ItemsController < ApplicationController
       params[:page_number] = 1
     end
 
-    if params[:limit] && params[:limit].to_i <= 0
-      params[:limit] = 20
+    if params[:per_page] && params[:per_page].to_i <= 0
+      params[:per_page] = 20
     end
 
-    if params[:limit] && params[:page_number]
-      items = Item.all.items_displayed_per_page(params[:limit], params[:page_number])
+    if params[:per_page] && params[:page_number]
+      items = Item.all.items_displayed_per_page(params[:per_page], params[:page_number])
       render json: ItemSerializer.new(items)
     elsif params[:page_number]
       items = Item.all.items_displayed_per_page(20, params[:page_number])
       render json: ItemSerializer.new(items)
-    elsif params[:limit]
-      items = Item.all.items_displayed_per_page(params[:limit])
+    elsif params[:per_page]
+      items = Item.all.items_displayed_per_page(params[:per_page])
       render json: ItemSerializer.new(items)
     else
       items = Item.all.items_displayed_per_page
@@ -40,6 +40,14 @@ class Api::V1::ItemsController < ApplicationController
 
   def destroy
     Item.delete(params[:id])
+  end
+
+  def search
+    items = Item.where('lower(name) like ?', params[:name].downcase)
+
+    if items
+      render json: ItemSerializer.new(items)
+    end
   end
 
   private

@@ -13,10 +13,10 @@ describe 'Merchant API' do
     expect(merchants[:data].count).to eq(20)
   end
 
-  it 'can take in just limit params' do
-    create_list(:merchant, 35)
+  it 'can take in just per page params' do
+    create_list(:merchant, 60)
 
-    get '/api/v1/merchants?limit=15'
+    get '/api/v1/merchants?per_page=15'
 
     expect(response).to be_successful
 
@@ -40,7 +40,7 @@ describe 'Merchant API' do
   it 'can take in both params' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?page_number=2&limit=15'
+    get '/api/v1/merchants?page_number=2&per_page=15'
 
     expect(response).to be_successful
 
@@ -52,7 +52,7 @@ describe 'Merchant API' do
   it 'handles zero limits' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?limit=0'
+    get '/api/v1/merchants?per_page=0'
 
     expect(response).to be_successful
 
@@ -76,7 +76,7 @@ describe 'Merchant API' do
   it 'handles negative limits' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?limit=-1'
+    get '/api/v1/merchants?per_page=-1'
 
     expect(response).to be_successful
 
