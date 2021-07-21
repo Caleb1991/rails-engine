@@ -26,7 +26,7 @@ describe 'Items API' do
   it 'can take in just page number params' do
     create_list(:item, 35)
 
-    get '/api/v1/items?page_number=2'
+    get '/api/v1/items?page=2'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -37,7 +37,7 @@ describe 'Items API' do
   it 'can take in both params' do
     create_list(:item, 35)
 
-    get '/api/v1/items?page_number=2&per_page=12'
+    get '/api/v1/items?page=2&per_page=12'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -59,7 +59,7 @@ describe 'Items API' do
   it 'defaults to one when given zero as a page_number' do
     create_list(:item, 35)
 
-    get '/api/v1/items?page_number=0'
+    get '/api/v1/items?page=0'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -70,7 +70,7 @@ describe 'Items API' do
   it 'defaults to 1 when given negative page_limits' do
     create_list(:item, 35)
 
-    get '/api/v1/items?page_number=-1'
+    get '/api/v1/items?page=-1'
 
     expect(response).to be_successful
     items_page_one = JSON.parse(response.body, symbolize_names: true)
@@ -154,7 +154,7 @@ describe 'Items API' do
     merchant = create(:merchant)
     item_1 = Item.create!(name: "Roald's Rings", description: 'A great buy', unit_price: 1300, merchant_id: merchant.id)
     item_2 = Item.create!(name: "Another Seller", description: 'Bring out the best', unit_price: 1400, merchant_id: merchant.id)
-    item_2 = Item.create!(name: "test", description: 'test', unit_price: 1400, merchant_id: merchant.id)
+    item_3 = Item.create!(name: "test", description: 'test', unit_price: 1400, merchant_id: merchant.id)
 
     get '/api/v1/items/find_all?name=ring'
 

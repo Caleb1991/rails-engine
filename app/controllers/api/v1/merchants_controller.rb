@@ -1,18 +1,18 @@
 class Api::V1::MerchantsController < ApplicationController
   def index
-    if params[:page_number] && params[:page_number].to_i <= 0
-      params[:page_number] = 1
+    if params[:page] && params[:page].to_i <= 0
+      params[:page] = 1
     end
 
     if params[:per_page] && params[:per_page].to_i <= 0 || params[:per_page] == nil
       params[:per_page] = 20
     end
 
-    if params.include?(:per_page) && params.include?(:page_number)
-      merchants = Merchant.all.merchants_displayed_per_page(params[:per_page], params[:page_number])
+    if params.include?(:per_page) && params.include?(:page)
+      merchants = Merchant.all.merchants_displayed_per_page(params[:per_page], params[:page])
       render json: MerchantSerializer.new(merchants)
-    elsif params.include?(:page_number)
-      merchants = Merchant.all.merchants_displayed_per_page(20, params[:page_number])
+    elsif params.include?(:page)
+      merchants = Merchant.all.merchants_displayed_per_page(20, params[:page])
       render json: MerchantSerializer.new(merchants)
     elsif params.include?(:per_page)
       merchants = Merchant.all.merchants_displayed_per_page(params[:per_page])

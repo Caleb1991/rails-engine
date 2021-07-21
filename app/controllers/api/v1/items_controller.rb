@@ -1,18 +1,18 @@
 class Api::V1::ItemsController < ApplicationController
   def index
-    if params[:page_number] && params[:page_number].to_i <= 0
-      params[:page_number] = 1
+    if params[:page] && params[:page].to_i <= 0
+      params[:page] = 1
     end
 
     if params[:per_page] && params[:per_page].to_i <= 0
       params[:per_page] = 20
     end
 
-    if params[:per_page] && params[:page_number]
-      items = Item.all.items_displayed_per_page(params[:per_page], params[:page_number])
+    if params[:per_page] && params[:page]
+      items = Item.all.items_displayed_per_page(params[:per_page], params[:page])
       render json: ItemSerializer.new(items)
-    elsif params[:page_number]
-      items = Item.all.items_displayed_per_page(20, params[:page_number])
+    elsif params[:page]
+      items = Item.all.items_displayed_per_page(20, params[:page])
       render json: ItemSerializer.new(items)
     elsif params[:per_page]
       items = Item.all.items_displayed_per_page(params[:per_page])
@@ -43,7 +43,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def search
-    items = Item.where('lower(name) like ?', params[:name].downcase)
+    items = Item.where('(lower(name) like ?) OR (lower(description) like ?)', "%#{params[:name].downcase}%", "%#{params[:name].downcase}%")
 
     if items
       render json: ItemSerializer.new(items)

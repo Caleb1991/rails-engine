@@ -28,7 +28,7 @@ describe 'Merchant API' do
   it 'can take in just page number params' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?page_number=2'
+    get '/api/v1/merchants?page=2'
 
     expect(response).to be_successful
 
@@ -40,7 +40,7 @@ describe 'Merchant API' do
   it 'can take in both params' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?page_number=2&per_page=15'
+    get '/api/v1/merchants?page=2&per_page=15'
 
     expect(response).to be_successful
 
@@ -64,7 +64,7 @@ describe 'Merchant API' do
   it 'handles zero page number' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?page_number=0'
+    get '/api/v1/merchants?page=0'
 
     expect(response).to be_successful
 
@@ -88,7 +88,7 @@ describe 'Merchant API' do
   it 'handles negative page numbers' do
     create_list(:merchant, 35)
 
-    get '/api/v1/merchants?page_number=-1'
+    get '/api/v1/merchants?page=-1'
 
     expect(response).to be_successful
 

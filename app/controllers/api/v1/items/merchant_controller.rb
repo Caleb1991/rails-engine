@@ -5,7 +5,7 @@ class Api::V1::Items::MerchantController < ApplicationController
     render json: MerchantSerializer.new(item.merchant)
   end
 
-  def search
-    item = Item.where('name = ?', params[:name])
-  end
+  # def search
+  #   item = Item.where('name = ?', params[:name])
+  # end
 end
