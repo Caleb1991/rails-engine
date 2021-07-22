@@ -121,4 +121,10 @@ describe 'Merchant API' do
 
     expect(results[:data][:attributes][:name]).to eq('Roald')
   end
+
+  it 'sends merchants with most sold items' do
+    get '/api/v1/merchants/most_items?quantity=2'
+
+    expect(response).to be_successful
+  end
 end
