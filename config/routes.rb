@@ -7,6 +7,10 @@ Rails.application.routes.draw do
       get '/items/find_all', to: 'items#search'
       resources :items
 
+      namespace :revenue do
+        resources :merchants, only: :index
+      end
+
       namespace :items do
         get '/find', to: 'items#search'
         scope '/:id', :as => 'item' do

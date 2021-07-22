@@ -260,6 +260,10 @@
           null,
           1,
           1,
+          null,
+          null,
+          1,
+          1,
           1,
           1,
           null,
@@ -279,9 +283,20 @@
         "lines": [
           1,
           1,
+          1,
+          1,
           null,
           1,
           8,
+          null,
+          null,
+          1,
+          1,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
@@ -634,6 +649,19 @@
           null
         ]
       },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/spec/requests/api/v1/revenue/merchants_spec.rb": {
+        "lines": [
+          1,
+          null,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
       "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/models/item.rb": {
         "lines": [
           1,
@@ -795,8 +823,42 @@
           null,
           null
         ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/controllers/api/v1/revenue/merchants_controller.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/models/invoice.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/models/transaction.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/models/invoice_item.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
       }
     },
-    "timestamp": 1626888193
+    "timestamp": 1626961496
   }
 }
