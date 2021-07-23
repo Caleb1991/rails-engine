@@ -37,6 +37,10 @@ class Api::V1::MerchantsController < ApplicationController
   end
 
   def most_items
+    if params[:quantity] == nil || params[:quantity].to_i <=0
+      params[:quantity] = 5
+    end
+
     render json: MerchantSerializer.new(Merchant.most_items_sold_by_merchant(params[:quantity]))
   end
 end
