@@ -18,14 +18,14 @@ Rails.application.routes.draw do
         end
       end
 
-      get '/merchants/find', to: 'merchants#search'
-      get '/merchants/most_items', to: 'merchants#most_items'
+    get '/merchants/find', to: 'merchants#search'
+    get '/merchants/most_items', to: 'merchants#most_items'
 
-      resources :merchants, only: [:index, :show]
+    resources :merchants, only: [:index, :show]
 
-      get '/items/find_all', to: 'items#search'
+    get '/items/find_all', to: 'items#search'
 
-      resources :items
+    resources :items
     end
   end
 end
