@@ -63,7 +63,9 @@ RSpec.describe Merchant, type: :model do
         expect(result.first).to eq(Merchant.last)
       end
     end
+  end
 
+  describe 'instance methods' do
     describe 'total_revenue_by_merchant' do
       it 'returns the revenue for a given merchant' do
         merchant_1 = Merchant.last
