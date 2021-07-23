@@ -9,7 +9,7 @@ Rails.application.routes.draw do
       resources :items
 
       namespace :revenue do
-        resources :merchants, only: :index
+        resources :merchants, only: [:index, :show]
       end
 
       namespace :items do

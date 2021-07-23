@@ -265,7 +265,7 @@
         "lines": [
           1,
           1,
-          595,
+          596,
           null,
           null
         ]
@@ -341,6 +341,12 @@
           null,
           null,
           null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
           null,
           null,
           null,
@@ -715,6 +721,21 @@
           null,
           1,
           null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          null,
+          1,
+          null,
+          0,
+          0,
+          0,
+          null,
           null
         ]
       },
@@ -915,10 +936,23 @@
           1,
           1,
           null,
+          null,
+          1,
+          1,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/models/customer.rb": {
+        "lines": [
+          1,
+          1,
           null
         ]
       }
     },
-    "timestamp": 1626965042
+    "timestamp": 1627006946
   }
 }
