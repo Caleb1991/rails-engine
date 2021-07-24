@@ -10,7 +10,7 @@ RSpec.describe 'Merchant API' do
     expect(response).to be_successful
   end
 
-  xit 'sends the total revenue for a given merchant' do
+  it 'sends the total revenue for a given merchant' do
     merchant = create(:merchant)
     item = Item.create!(name: 'Roalds Razors', description: 'Sharp as a tack', unit_price: 1200, merchant_id: merchant.id)
     customer = Customer.create!(first_name: 'Larry', last_name: 'Larryson')
@@ -21,7 +21,8 @@ RSpec.describe 'Merchant API' do
     get "/api/v1/revenue/merchants/#{merchant.id}"
 
     result = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
+
     expect(response).to be_successful
+    expect(result[:data][:attributes][:revenue]).to eq(38970.0)
   end
 end

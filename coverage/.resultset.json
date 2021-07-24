@@ -265,7 +265,7 @@
         "lines": [
           1,
           1,
-          756,
+          757,
           null,
           null
         ]
@@ -535,7 +535,7 @@
           null,
           null,
           1,
-          1,
+          2,
           null,
           null,
           null,
@@ -923,18 +923,19 @@
           null,
           null,
           1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           null,
-          0,
+          1,
           null,
-          0,
-          0,
-          0,
+          1,
+          null,
+          1,
+          1,
           null,
           null
         ]
@@ -1106,14 +1107,26 @@
           null,
           null,
           1,
-          0,
+          1,
           null,
-          0,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/calebwittman/turing/mod_3/projects/rails-engine/app/serializers/merchant_total_revenue_serializer.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
           null,
           null
         ]
       }
     },
-    "timestamp": 1627046179
+    "timestamp": 1627161508
   }
 }
