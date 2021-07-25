@@ -21,7 +21,7 @@ RSpec.describe 'Merchant API' do
     get "/api/v1/revenue/merchants/#{merchant.id}"
 
     result = JSON.parse(response.body, symbolize_names: true)
-
+    binding.pry
     expect(response).to be_successful
     expect(result[:data][:attributes][:revenue]).to eq(38970.0)
   end
